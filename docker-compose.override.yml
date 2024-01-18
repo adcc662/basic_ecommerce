@@ -8,6 +8,7 @@ services:
       POSTGRES_DB: ecommerce
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
+      POSTGRES_HOST: postgres
     volumes:
       - db-data:/var/lib/postgresql
 
@@ -26,7 +27,7 @@ services:
       target: dev
     depends_on:
       - composer
-      - mysql
+      - postgres
     volumes:
       - ./:/app
       - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
